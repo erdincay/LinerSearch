@@ -1,4 +1,4 @@
-package tests.junit;
+package tests.correctness;
 
 import static org.junit.Assert.fail;
 
