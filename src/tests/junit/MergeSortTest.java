@@ -1,6 +1,5 @@
 package tests.junit;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
@@ -18,7 +17,7 @@ import search.model.MergeSort;
 public class MergeSortTest {
     private List<Integer> numbers;
     private final static int SIZE = 20;
-    private final static int MAX = 100;
+    private final static int MAX = 1000;
 
     @Before
     public void setUp() throws Exception {
@@ -44,8 +43,6 @@ public class MergeSortTest {
                 fail("Should not happen");
             }
         }
-        assertTrue(true);
-
     }
 
     @Test
@@ -64,7 +61,6 @@ public class MergeSortTest {
                     fail("Should not happen");
                 }
             }
-            assertTrue(true);
         }
     }
 
@@ -85,6 +81,5 @@ public class MergeSortTest {
                 fail("different from standard java sort");
             }
         }
-        assertTrue(true);
     }
 }
