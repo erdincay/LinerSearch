@@ -15,7 +15,7 @@ public class SelectKth2 {
         qsp = new QuickSortPartition();
     }
 
-    public Integer select(int keyIndex, List<Integer> numbers) {
+    public <T extends Comparable<T>> T select(int keyIndex, List<T> numbers) {
         if(keyIndex < 0 || keyIndex >= numbers.size() ) {
             throw new IllegalStateException("out of index: " +
                     "keyIndex = " + keyIndex + ", "  +

@@ -9,7 +9,7 @@ import java.util.List;
  * Time: 8:53 PM
  */
 public class SelectKth1 {
-    public Integer select(int keyIndex, List<Integer> numbers) {
+    public <T extends Comparable<T>> T select(int keyIndex, List<T> numbers) {
         MergeSort ms = new MergeSort();
         ms.sort(numbers);
         return numbers.get(keyIndex);

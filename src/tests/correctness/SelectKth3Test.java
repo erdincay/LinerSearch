@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 public class SelectKth3Test {
     private List<Integer> numbers;
     private List<Integer> copy_numbers;
-    private final static int SIZE = 500;
+    private final static int SIZE = 1000;
     private final static int MAX = 1000;
 
     @Before

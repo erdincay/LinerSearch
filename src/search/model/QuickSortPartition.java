@@ -8,7 +8,7 @@ import java.util.List;
  * Time: 10:53 PM
  */
 public class QuickSortPartition {
-    public int partition(int low, int high, List<Integer> numbers, int pivotIndex) {
+    public <T extends Comparable<T>> int partition(int low, int high, List<T> numbers, int pivotIndex) {
         if(low < 0 || low >= numbers.size() ||
                 high < 0 || high >= numbers.size() ||
                 low > high ||
@@ -20,11 +20,11 @@ public class QuickSortPartition {
                     "array size = " + numbers.size() + ".");
         }
 
-        int pivotVal = numbers.get(pivotIndex);
+        T pivotVal = numbers.get(pivotIndex);
         swap(pivotIndex,high,numbers);
         int retIndex = low;
         for(int i = low; i <= high; i++) {
-            if (numbers.get(i) < pivotVal) {
+            if (numbers.get(i).compareTo(pivotVal) < 0) {
                 swap(retIndex,i,numbers);
                 retIndex++;
             }
@@ -34,8 +34,8 @@ public class QuickSortPartition {
         return retIndex;
     }
 
-    private void swap(int srcIndex, int dstIndex, List<Integer> numbers) {
-        Integer temp = numbers.get(srcIndex);
+    private <T extends Comparable<T>> void swap(int srcIndex, int dstIndex, List<T> numbers) {
+        T temp = numbers.get(srcIndex);
         numbers.set(srcIndex,numbers.get(dstIndex));
         numbers.set(dstIndex,temp);
     }

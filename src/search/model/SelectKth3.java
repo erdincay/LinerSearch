@@ -15,7 +15,7 @@ public class SelectKth3 {
         qsp = new QuickSortPartition();
     }
 
-    public Integer select(int keyIndex, List<Integer> numbers) {
+    public <T extends Comparable<T>> T select(int keyIndex, List<T> numbers) {
         if(keyIndex < 0 || keyIndex >= numbers.size() ) {
             throw new IllegalStateException("out of index: " +
                     "keyIndex = " + keyIndex + ", "  +
@@ -24,7 +24,7 @@ public class SelectKth3 {
         return select_itera(0,numbers.size() - 1,numbers,keyIndex);
     }
 
-    private Integer select_itera(int low, int high, List<Integer> numbers,int keyIndex) {
+    private <T extends Comparable<T>> T select_itera(int low, int high, List<T> numbers,int keyIndex) {
         if(low == high) {
             return numbers.get(low);
         }
