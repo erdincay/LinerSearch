@@ -39,7 +39,7 @@ public class MedianArray<T extends Comparable<T>> implements Comparable{
             return ((MedianArray)m).getMedianIndex();
         }
         else {
-            return (low + high) / 2;
+            return ((low + high) / 2);
         }
     }
 

@@ -19,8 +19,8 @@ import static org.junit.Assert.assertEquals;
 public class SelectKth4Test {
     private List<Integer> numbers;
     private List<Integer> copy_numbers;
-    private final static int SIZE = 500;
-    private final static int MAX = 200;
+    private final static int SIZE = 1250;
+    private final static int MAX = 2000;
 
     @Before
     public void setUp() throws Exception {
@@ -28,7 +28,6 @@ public class SelectKth4Test {
         Random generator = new Random();
         for (int i = 0; i < SIZE; i++) {
             numbers.add(generator.nextInt(MAX));
-            //numbers.add(i);
         }
 
         copy_numbers = new ArrayList<Integer>(numbers);
