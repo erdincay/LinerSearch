@@ -19,8 +19,8 @@ import static org.junit.Assert.assertEquals;
 public class SelectKth1Test {
     private List<Integer> numbers;
     private List<Integer> copy_numbers;
-    private final static int SIZE = 2000;
-    private final static int MAX = 1000;
+    private final static int SIZE = 1000;
+    private final static int MAX = 5000;
 
     @Before
     public void setUp() throws Exception {

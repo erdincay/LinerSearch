@@ -8,7 +8,7 @@ import java.util.List;
  * Date: 5/29/13
  * Time: 8:53 PM
  */
-public class SelectKth1 {
+public class SelectKth1 implements SelectKthI {
     public <T extends Comparable<T>> T select(int keyIndex, List<T> numbers) {
         MergeSort ms = new MergeSort();
         ms.sort(numbers);

@@ -8,7 +8,7 @@ import java.util.List;
  * Date: 5/29/13
  * Time: 9:35 PM
  */
-public class SelectKth2 {
+public class SelectKth2 implements SelectKthI {
     private QuickSortPartition qsp;
 
     public SelectKth2() {
