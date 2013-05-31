@@ -19,7 +19,7 @@ public class MedianArray<T extends Comparable<T>> implements Comparable{
         insertSort(low,high,oriArray);
     }
 
-    private <T extends Comparable<T>> void insertSort(int left, int right, List<T> list) {
+    private void insertSort(int left, int right, List<T> list) {
         for (int j, i = left + 1; i <= right; i++) {
             T tmp = list.get(i);
             for (j = i; ((j > left) && (list.get(j - 1).compareTo(tmp) > 0)); j--) {
@@ -29,12 +29,32 @@ public class MedianArray<T extends Comparable<T>> implements Comparable{
         }
     }
 
-    private T getMedian() {
+    private T getMedianItem() {
         return oriArray.get((low + high) / 2);
     }
 
+    public int getMedianIndex() {
+        T m = getMedianItem();
+        if (m instanceof MedianArray) {
+            return ((MedianArray)m).getMedianIndex();
+        }
+        else {
+            return (low + high) / 2;
+        }
+    }
+
+    public Object getMedianVal() {
+        T m = getMedianItem();
+        if (m instanceof MedianArray) {
+            return ((MedianArray)m).getMedianVal();
+        }
+        else {
+            return m;
+        }
+    }
+
     @Override
-    public int compareTo(Object o) {
-        return getMedian().compareTo((T)o);
+    public int compareTo(Object m) {
+        return getMedianItem().compareTo((T) ((MedianArray)m).getMedianItem());
     }
 }
