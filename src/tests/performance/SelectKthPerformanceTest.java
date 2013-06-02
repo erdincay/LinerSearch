@@ -1,9 +1,9 @@
 package tests.performance;
 
-import Report.Mathematica.Mathematica;
-import Report.Mathematica.Record;
-import Report.Mathematica.RecordTime;
-import Report.Mathematica.Records;
+import report.mathematica.Mathematica;
+import report.mathematica.Record;
+import report.mathematica.RecordTime;
+import report.mathematica.Records;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -118,9 +118,27 @@ public class SelectKthPerformanceTest {
         System.out.println("testSelectKth4 over");
     }
 
+    //@Test
+    public void testSelectKth5() throws Exception {
+        SelectKth2 sk = new SelectKth2();
+        Records rds = new Records("sk5");
+        testSelect(sk, rds, OriLists);
+        recordsList.add(rds);
+        System.out.println("testSelectKth5 over");
+    }
+
+    //@Test
+    public void testSelectKth6() throws Exception {
+        SelectKth3 sk = new SelectKth3();
+        Records rds = new Records("sk6");
+        testSelect(sk, rds, OriLists);
+        recordsList.add(rds);
+        System.out.println("testSelectKth6 over");
+    }
+
     private Records testSelect(SelectKthI sk, Records rds,List<List<Integer>> numberLists) throws Exception {
         for (List<Integer> itera : numberLists) {
-            int repeats = Records.calcRepeats(itera.size());
+            int repeats = Records.calcRepeats(itera.size()) * 2 * 10;
             RecordTime rt = new RecordTime();
             for (int i=0; i<repeats; i++) {
                 {

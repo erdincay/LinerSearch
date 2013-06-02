@@ -1,4 +1,4 @@
-package Report.Mathematica;
+package report.mathematica;
 
 /**
   * User: Ding

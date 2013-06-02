@@ -1,4 +1,4 @@
-package Report.Mathematica;
+package report.mathematica;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

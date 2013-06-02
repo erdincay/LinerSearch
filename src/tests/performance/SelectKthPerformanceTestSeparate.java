@@ -1,8 +1,8 @@
 package tests.performance;
 
-import Report.Mathematica.Record;
-import Report.Mathematica.RecordTime;
-import Report.Mathematica.Records;
+import report.mathematica.Record;
+import report.mathematica.RecordTime;
+import report.mathematica.Records;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import search.model.*;

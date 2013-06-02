@@ -1,4 +1,4 @@
-package Report.Mathematica;
+package report.mathematica;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -14,7 +14,6 @@ import java.util.*;
  */
 public class Records extends TreeMap<Integer,Record> {
     private String name;
-    //int[] lengthList = {10, 50, 100, 250, 500, 1000, 2500, 5000, 10000, 25000, 50000};
 
     public Records(String name) {
         this.name = name;
