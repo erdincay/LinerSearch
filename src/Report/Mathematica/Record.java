@@ -1,4 +1,4 @@
-package tests.performance;
+package Report.Mathematica;
 
 /**
  * User: Ding

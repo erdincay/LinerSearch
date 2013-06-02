@@ -16,7 +16,7 @@ public class SelectKth4 implements SelectKthI {
         qsp = new QuickSortPartition();
     }
 
-    private <T extends Comparable<T>> T sortSelect(int left, int right, List<T> list, int keyIndex) {
+    private <T extends Comparable<T>> int sortSelectIndex(int left, int right, List<T> list, int keyIndex) {
         for (int j, i = left + 1; i <= right; i++) {
             T tmp = list.get(i);
             for (j = i; ((j > left) && (list.get(j - 1).compareTo(tmp) > 0)); j--) {
@@ -25,17 +25,18 @@ public class SelectKth4 implements SelectKthI {
             list.set(j,tmp);
         }
 
-        return list.get(keyIndex);
+        return left + keyIndex;
     }
 
     public <T extends Comparable<T>> T select(int keyIndex, List<T> numbers) {
-        return select_itera(0,numbers.size() - 1,numbers,keyIndex);
+        int index = select_itera(0,numbers.size() - 1,numbers,keyIndex);
+        return numbers.get(index);
     }
 
-    private <T extends Comparable<T>> T getMedianOfMedian(int low, int high, List<T> numbers) {
+    private <T extends Comparable<T>> int select_itera(int low, int high, List<T> numbers, int keyIndex) {
         int size = high - low + 1;
         if (size <= subGroupSize) {
-            return sortSelect(low, high, numbers, (low + high) / 2);
+            return sortSelectIndex(low, high, numbers, keyIndex);
         }
 
         int numMedians = size / subGroupSize;
@@ -50,28 +51,21 @@ public class SelectKth4 implements SelectKthI {
             medians.add(ma);
         }
 
-        return (T)getMedianOfMedian(0, medians.size() - 1, medians);
-    }
-    private <T extends Comparable<T>> T select_itera(int low, int high, List<T> numbers, int keyIndex) {
-        int size = high - low + 1;
-        if (size <= subGroupSize) {
-            return sortSelect(low, high, numbers, keyIndex);
-        }
-
-        MedianArray ma = (MedianArray)getMedianOfMedian(low,high,numbers);
-        T medianVal = (T)ma.getMedianVal();
-        int medianIndex = ma.getMedianIndex();
+        int index = select_itera(0, medians.size() - 1, medians, medians.size() / 2);
+        MedianArray medianItem = medians.get(index);
+        int medianIndex = medianItem.getMedianIndex();
 
         int pivotIndex = qsp.partition(low,high,numbers,medianIndex);
+        int pivotDist = pivotIndex - low;
 
-        if (keyIndex == pivotIndex) {
-            return medianVal;
+        if (keyIndex == pivotDist) {
+            return pivotIndex;
         }
-        else if (keyIndex < pivotIndex) {
-            return select_itera(0, pivotIndex - 1,numbers,keyIndex);
+        else if (keyIndex < pivotDist) {
+            return select_itera(low, pivotIndex - 1,numbers,keyIndex);
         }
         else {
-            return select_itera(pivotIndex + 1,high,numbers,keyIndex);
+            return select_itera(pivotIndex + 1,high,numbers,keyIndex-(pivotDist + 1));
         }
     }
 }

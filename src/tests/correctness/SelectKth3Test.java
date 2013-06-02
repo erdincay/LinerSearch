@@ -20,7 +20,7 @@ public class SelectKth3Test {
     private List<Integer> numbers;
     private List<Integer> copy_numbers;
     private final static int SIZE = 1000;
-    private final static int MAX = 5000;
+    private final static int MAX = 10000;
 
     @Before
     public void setUp() throws Exception {

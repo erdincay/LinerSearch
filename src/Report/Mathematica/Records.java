@@ -1,14 +1,11 @@
-package tests.performance;
+package Report.Mathematica;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * User: Ding
@@ -26,7 +23,7 @@ public class Records extends TreeMap<Integer,Record> {
     public static int calcRepeats(int size) {
         int ret;
 
-        if (size <= 10) {
+       if (size <= 10) {
             ret = 200000;
         } else if (size <= 50) {
             ret = 40000;
@@ -58,6 +55,12 @@ public class Records extends TreeMap<Integer,Record> {
         else if (size <= 250000) {
             ret = 8;
         }
+        else if (size <= 500000) {
+            ret = 4;
+        }
+        else if (size <= 1000000) {
+            ret = 2;
+        }
         else {
             ret = 1;
         }
@@ -69,7 +72,7 @@ public class Records extends TreeMap<Integer,Record> {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         Date date = new Date();
 
-        BufferedWriter out = new BufferedWriter(new FileWriter(name, true));
+        BufferedWriter out = new BufferedWriter(new FileWriter(name + ".rd", true));
         out.newLine();
         out.write(dateFormat.format(date) + " : ");
         out.write(this.toString());
@@ -81,18 +84,50 @@ public class Records extends TreeMap<Integer,Record> {
         writeRecords();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public List<Records> Split(int div) {
+        int subNum = this.size() / div;
+        List<Records> list = new ArrayList<Records>();
+
+        int count = 0;
+        Records rds = new Records(getName());
+        for (Map.Entry entry : this.entrySet()) {
+            if (count != 0 && count % subNum == 0 && this.size() - count >= subNum) {
+                list.add(rds);
+                rds = new Records(getName());
+            }
+
+            rds.put((Integer)entry.getKey(), (Record)entry.getValue());
+
+            count++;
+        }
+        list.add(rds);
+
+        return list;
+    }
+
     @Override
     public String toString() {
         StringBuilder sRet = new StringBuilder();
         sRet.append("{ ");
-        for (Map.Entry entry : this.entrySet()) {
+        Iterator iterator = this.entrySet().iterator();
+        while (iterator.hasNext()) {
             sRet.append("{");
+            Map.Entry entry = (Map.Entry) iterator.next();
             sRet.append(entry.getKey());
             sRet.append(", ");
             sRet.append(entry.getValue());
-            sRet.append("}, ");
+            if (iterator.hasNext()) {
+                sRet.append("}, ");
+            }
+            else {
+                sRet.append("}");
+            }
         }
-        sRet.append("}");
+        sRet.append("};");
 
         return sRet.toString();
     }

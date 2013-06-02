@@ -30,17 +30,11 @@ public class MedianArray<T extends Comparable<T>> implements Comparable{
     }
 
     private T getMedianItem() {
-        return oriArray.get((low + high) / 2);
+        return oriArray.get(getMedianIndex());
     }
 
     public int getMedianIndex() {
-        T m = getMedianItem();
-        if (m instanceof MedianArray) {
-            return ((MedianArray)m).getMedianIndex();
-        }
-        else {
-            return ((low + high) / 2);
-        }
+        return (low + high) / 2;
     }
 
     public Object getMedianVal() {
