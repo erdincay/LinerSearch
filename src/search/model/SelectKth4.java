@@ -20,16 +20,16 @@ public class SelectKth4 implements SelectKthI {
         for (int j, i = left + 1; i <= right; i++) {
             T tmp = list.get(i);
             for (j = i; ((j > left) && (list.get(j - 1).compareTo(tmp) > 0)); j--) {
-                list.set(j, list.get(j-1));
+                list.set(j, list.get(j - 1));
             }
-            list.set(j,tmp);
+            list.set(j, tmp);
         }
 
         return left + keyIndex;
     }
 
     public <T extends Comparable<T>> T select(int keyIndex, List<T> numbers) {
-        int index = select_itera(0,numbers.size() - 1,numbers,keyIndex);
+        int index = select_itera(0, numbers.size() - 1, numbers, keyIndex);
         return numbers.get(index);
     }
 
@@ -41,13 +41,13 @@ public class SelectKth4 implements SelectKthI {
 
         int numMedians = size / subGroupSize;
         List<MedianArray> medians = new ArrayList<MedianArray>();
-        for (int i=0;i<numMedians;i++) {
+        for (int i = 0; i < numMedians; i++) {
             int left = low + i * subGroupSize;
             int right = left + subGroupSize - 1;
             if (right > high) {
                 right = high;
             }
-            MedianArray ma = new MedianArray(numbers,left,right );
+            MedianArray ma = new MedianArray(numbers, left, right);
             medians.add(ma);
         }
 
@@ -55,17 +55,15 @@ public class SelectKth4 implements SelectKthI {
         MedianArray medianItem = medians.get(index);
         int medianIndex = medianItem.getMedianIndex();
 
-        int pivotIndex = qsp.partition(low,high,numbers,medianIndex);
+        int pivotIndex = qsp.partition(low, high, numbers, medianIndex);
         int pivotDist = pivotIndex - low;
 
         if (keyIndex == pivotDist) {
             return pivotIndex;
-        }
-        else if (keyIndex < pivotDist) {
-            return select_itera(low, pivotIndex - 1,numbers,keyIndex);
-        }
-        else {
-            return select_itera(pivotIndex + 1,high,numbers,keyIndex-(pivotDist + 1));
+        } else if (keyIndex < pivotDist) {
+            return select_itera(low, pivotIndex - 1, numbers, keyIndex);
+        } else {
+            return select_itera(pivotIndex + 1, high, numbers, keyIndex - (pivotDist + 1));
         }
     }
 }

@@ -12,7 +12,7 @@ import java.util.*;
  * Date: 5/31/13
  * Time: 1:05 PM
  */
-public class Records extends TreeMap<Integer,Record> {
+public class Records extends TreeMap<Integer, Record> {
     private String name;
 
     public Records(String name) {
@@ -22,7 +22,7 @@ public class Records extends TreeMap<Integer,Record> {
     public static int calcRepeats(int size) {
         int ret;
 
-       if (size <= 10) {
+        if (size <= 10) {
             ret = 200000;
         } else if (size <= 50) {
             ret = 40000;
@@ -38,29 +38,21 @@ public class Records extends TreeMap<Integer,Record> {
             ret = 800;
         } else if (size <= 5000) {
             ret = 400;
-        }
-        else if (size <= 10000) {
+        } else if (size <= 10000) {
             ret = 200;
-        }
-        else if (size <= 25000) {
+        } else if (size <= 25000) {
             ret = 80;
-        }
-        else if (size <= 50000) {
+        } else if (size <= 50000) {
             ret = 40;
-        }
-        else if (size <= 100000) {
+        } else if (size <= 100000) {
             ret = 20;
-        }
-        else if (size <= 250000) {
+        } else if (size <= 250000) {
             ret = 8;
-        }
-        else if (size <= 500000) {
+        } else if (size <= 500000) {
             ret = 4;
-        }
-        else if (size <= 1000000) {
+        } else if (size <= 1000000) {
             ret = 2;
-        }
-        else {
+        } else {
             ret = 1;
         }
 
@@ -99,7 +91,7 @@ public class Records extends TreeMap<Integer,Record> {
                 rds = new Records(getName());
             }
 
-            rds.put((Integer)entry.getKey(), (Record)entry.getValue());
+            rds.put((Integer) entry.getKey(), (Record) entry.getValue());
 
             count++;
         }
@@ -121,8 +113,7 @@ public class Records extends TreeMap<Integer,Record> {
             sRet.append(entry.getValue());
             if (iterator.hasNext()) {
                 sRet.append("}, ");
-            }
-            else {
+            } else {
                 sRet.append("}");
             }
         }

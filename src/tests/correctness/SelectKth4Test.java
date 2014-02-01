@@ -38,34 +38,34 @@ public class SelectKth4Test {
     public void testSelect1st() throws Exception {
         int index = 0;
         SelectKth4 sk = new SelectKth4();
-        assertEquals(copy_numbers.get(index),sk.select(index,numbers));
+        assertEquals(copy_numbers.get(index), sk.select(index, numbers));
     }
 
     @Test
     public void testSelectQuater() throws Exception {
         int index = numbers.size() / 4;
         SelectKth4 sk = new SelectKth4();
-        assertEquals(copy_numbers.get(index),sk.select(index,numbers));
+        assertEquals(copy_numbers.get(index), sk.select(index, numbers));
     }
 
     @Test
     public void testSelectHalf() throws Exception {
         int index = numbers.size() / 2;
         SelectKth4 sk = new SelectKth4();
-        assertEquals(copy_numbers.get(index),sk.select(index,numbers));
+        assertEquals(copy_numbers.get(index), sk.select(index, numbers));
     }
 
     @Test
     public void testSelectRevQuater() throws Exception {
         int index = (numbers.size() * 3) / 4;
         SelectKth4 sk = new SelectKth4();
-        assertEquals(copy_numbers.get(index),sk.select(index,numbers));
+        assertEquals(copy_numbers.get(index), sk.select(index, numbers));
     }
 
     @Test
     public void testSelectLast() throws Exception {
         int index = numbers.size() - 1;
         SelectKth4 sk = new SelectKth4();
-        assertEquals(copy_numbers.get(index),sk.select(index,numbers));
+        assertEquals(copy_numbers.get(index), sk.select(index, numbers));
     }
 }

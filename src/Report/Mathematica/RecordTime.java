@@ -1,7 +1,7 @@
 package report.mathematica;
 
 /**
-  * User: Ding
+ * User: Ding
  * Date: 5/12/13
  * Time: 12:41 AM
  */

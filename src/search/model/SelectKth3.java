@@ -16,30 +16,28 @@ public class SelectKth3 implements SelectKthI {
     }
 
     public <T extends Comparable<T>> T select(int keyIndex, List<T> numbers) {
-        if(keyIndex < 0 || keyIndex >= numbers.size() ) {
+        if (keyIndex < 0 || keyIndex >= numbers.size()) {
             throw new IllegalStateException("out of index: " +
-                    "keyIndex = " + keyIndex + ", "  +
+                    "keyIndex = " + keyIndex + ", " +
                     "array size = " + numbers.size() + ".");
         }
-        return select_itera(0,numbers.size() - 1,numbers,keyIndex);
+        return select_itera(0, numbers.size() - 1, numbers, keyIndex);
     }
 
-    private <T extends Comparable<T>> T select_itera(int low, int high, List<T> numbers,int keyIndex) {
-        if(low == high) {
+    private <T extends Comparable<T>> T select_itera(int low, int high, List<T> numbers, int keyIndex) {
+        if (low == high) {
             return numbers.get(low);
         }
 
-        int pivotIndex = qsp.partition(low,high,numbers,low);
+        int pivotIndex = qsp.partition(low, high, numbers, low);
         int pivotDist = pivotIndex - low;
 
         if (pivotDist == keyIndex) {
             return numbers.get(pivotIndex);
-        }
-        else if (pivotDist > keyIndex) {
-            return select_itera(low,pivotIndex-1,numbers,keyIndex);
-        }
-        else {
-            return select_itera(pivotIndex+1,high,numbers,keyIndex - (pivotDist + 1));
+        } else if (pivotDist > keyIndex) {
+            return select_itera(low, pivotIndex - 1, numbers, keyIndex);
+        } else {
+            return select_itera(pivotIndex + 1, high, numbers, keyIndex - (pivotDist + 1));
         }
     }
 

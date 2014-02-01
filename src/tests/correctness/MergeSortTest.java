@@ -10,10 +10,10 @@ import java.util.*;
 import search.model.MergeSort;
 
 /**
-  * User: Ding
+ * User: Ding
  * Date: 5/29/13
  * Time: 5:03 PM
-  */
+ */
 public class MergeSortTest {
     private List<Integer> numbers;
     private final static int SIZE = 20;

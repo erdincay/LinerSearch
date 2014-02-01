@@ -25,7 +25,7 @@ public class SelectKthPerformanceTest {
 
     //Test data
     private static List<List<Integer>> OriLists;
-    private static int  digit = 7; // max digits of the automatically generated number array
+    private static int digit = 7; // max digits of the automatically generated number array
 
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
@@ -34,17 +34,17 @@ public class SelectKthPerformanceTest {
         List<Integer> lengthList = new ArrayList<Integer>();
         lengthList.add(10);
         lengthList.add(50);
-        for (int i=2;i<digit;i++) {
-            lengthList.add(lengthList.get(lengthList.size()-1) * 2);
-            lengthList.add(lengthList.get(lengthList.size()-1) * 5 / 2);
-            lengthList.add(lengthList.get(lengthList.size()-1) * 2);
+        for (int i = 2; i < digit; i++) {
+            lengthList.add(lengthList.get(lengthList.size() - 1) * 2);
+            lengthList.add(lengthList.get(lengthList.size() - 1) * 5 / 2);
+            lengthList.add(lengthList.get(lengthList.size() - 1) * 2);
         }
 
         Random generator = new Random();
         OriLists = new ArrayList<List<Integer>>();
-        for (int length : lengthList){
+        for (int length : lengthList) {
             List<Integer> numbers = new ArrayList<Integer>();
-            for (int j=0; j<length;j++) {
+            for (int j = 0; j < length; j++) {
                 numbers.add(generator.nextInt(length * 5));
             }
             OriLists.add(numbers);
@@ -67,17 +67,17 @@ public class SelectKthPerformanceTest {
         Mathematica rptL = new Mathematica(listL);
         Mathematica rptR = new Mathematica(listR);
 
-        rpt.write("analysis.txt",true);
-        rpt.compare("analysis.txt","sk1","sk4");
-        rpt.compare("analysis.txt","sk2","sk3");
+        rpt.write("analysis.txt", true);
+        rpt.compare("analysis.txt", "sk1", "sk4");
+        rpt.compare("analysis.txt", "sk2", "sk3");
 
-        rptL.write("analysis.txt",false);
-        rptL.compare("analysis.txt","sk1","sk4");
-        rptL.compare("analysis.txt","sk2","sk3");
+        rptL.write("analysis.txt", false);
+        rptL.compare("analysis.txt", "sk1", "sk4");
+        rptL.compare("analysis.txt", "sk2", "sk3");
 
-        rptR.write("analysis.txt",false);
-        rpt.compare("analysis.txt","sk1","sk4");
-        rpt.compare("analysis.txt","sk2","sk3");
+        rptR.write("analysis.txt", false);
+        rpt.compare("analysis.txt", "sk1", "sk4");
+        rpt.compare("analysis.txt", "sk2", "sk3");
 
         System.out.println("@AfterClass");
     }
@@ -136,15 +136,15 @@ public class SelectKthPerformanceTest {
         System.out.println("testSelectKth6 over");
     }
 
-    private Records testSelect(SelectKthI sk, Records rds,List<List<Integer>> numberLists) throws Exception {
+    private Records testSelect(SelectKthI sk, Records rds, List<List<Integer>> numberLists) throws Exception {
         for (List<Integer> itera : numberLists) {
             int repeats = Records.calcRepeats(itera.size()) * 2 * 10;
             RecordTime rt = new RecordTime();
-            for (int i=0; i<repeats; i++) {
+            for (int i = 0; i < repeats; i++) {
                 {
                     List<Integer> numbers = new ArrayList<Integer>(itera);
                     rt.start();
-                    sk.select(0,numbers);
+                    sk.select(0, numbers);
                     rt.end();
                 }
                 {

@@ -19,8 +19,7 @@ public class Record {
     public String toString() {
         if (repeats_ == 1) {
             return Long.toString(execTime_);
-        }
-        else {
+        } else {
             return execTime_ + "/" + repeats_;
         }
     }

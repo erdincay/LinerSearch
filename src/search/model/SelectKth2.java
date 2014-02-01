@@ -16,24 +16,22 @@ public class SelectKth2 implements SelectKthI {
     }
 
     public <T extends Comparable<T>> T select(int keyIndex, List<T> numbers) {
-        if(keyIndex < 0 || keyIndex >= numbers.size() ) {
+        if (keyIndex < 0 || keyIndex >= numbers.size()) {
             throw new IllegalStateException("out of index: " +
-                    "keyIndex = " + keyIndex + ", "  +
+                    "keyIndex = " + keyIndex + ", " +
                     "array size = " + numbers.size() + ".");
         }
 
         int left = 0;
         int right = numbers.size() - 1;
         while (true) {
-            int pivotIndex = qsp.partition(left,right,numbers,left);
+            int pivotIndex = qsp.partition(left, right, numbers, left);
             int pivotDist = pivotIndex - left;
             if (pivotDist == keyIndex) {
                 return numbers.get(pivotIndex);
-            }
-            else if(pivotDist > keyIndex) {
+            } else if (pivotDist > keyIndex) {
                 right = pivotIndex - 1;
-            }
-            else {
+            } else {
                 keyIndex -= pivotDist + 1;
                 left = pivotIndex + 1;
             }

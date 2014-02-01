@@ -19,7 +19,7 @@ class ReportRecords {
     private Records rds;
     private String PlotStyle;
 
-    public ReportRecords(Records rds,String pls) {
+    public ReportRecords(Records rds, String pls) {
         this.rds = rds;
         this.PlotStyle = pls;
     }
@@ -43,7 +43,7 @@ public class Mathematica {
 
     public Mathematica(List<Records> records) {
         rpRecordsList = new ArrayList<ReportRecords>();
-        for (int i=0; i<records.size(); i++) {
+        for (int i = 0; i < records.size(); i++) {
             rpRecordsList.add(new ReportRecords(records.get(i), PlotStyleTypes[i % PlotStyleTypes.length]));
         }
     }
@@ -65,8 +65,7 @@ public class Mathematica {
             strRet.append(rds.getName());
             if (iterator.hasNext()) {
                 strRet.append(", ");
-            }
-            else {
+            } else {
                 strRet.append("}, ");
             }
         }
@@ -78,8 +77,7 @@ public class Mathematica {
             strRet.append(rds.getPlotStyle());
             if (iterator.hasNext()) {
                 strRet.append(", ");
-            }
-            else {
+            } else {
                 strRet.append("}, ");
             }
         }
@@ -93,8 +91,7 @@ public class Mathematica {
             strRet.append("\"");
             if (iterator.hasNext()) {
                 strRet.append(", ");
-            }
-            else {
+            } else {
                 strRet.append("}, Bottom], ");
             }
         }
@@ -105,8 +102,8 @@ public class Mathematica {
         return strRet.toString();
     }
 
-    public void write(String filename,boolean timeTag) throws IOException {
-        BufferedWriter out = new BufferedWriter(new FileWriter(filename,true));
+    public void write(String filename, boolean timeTag) throws IOException {
+        BufferedWriter out = new BufferedWriter(new FileWriter(filename, true));
 
         if (timeTag) {
             DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
@@ -127,11 +124,11 @@ public class Mathematica {
         out.close();
     }
 
-    public void compare(String filename, String r1,String r2) throws IOException {
-        BufferedWriter out = new BufferedWriter(new FileWriter(filename,true));
+    public void compare(String filename, String r1, String r2) throws IOException {
+        BufferedWriter out = new BufferedWriter(new FileWriter(filename, true));
 
         out.newLine();
-        out.write(ListLinePlotCompare(getRecordByName(r1),getRecordByName(r2)));
+        out.write(ListLinePlotCompare(getRecordByName(r1), getRecordByName(r2)));
 
         out.close();
     }
